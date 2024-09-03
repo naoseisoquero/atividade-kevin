@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Adivinhação</title>
+  
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Jogo de Adivinhação</h1>
+        <p>Adivinhe um número entre 1 e 100:</p>
+        <input type="number" id="guess" min="1" max="100">
+        <button id="submit">Enviar Palpite</button>
+        <p id="message" class="message"></p>
+        <button id="restart" style="display: none;">Jogar Novamente</button>
+    </div>
+
+    <script>
+       
+        let randomNumber;
+        let attempts = 0;
+
+        function generateRandomNumber() {
+            return Math.floor(Math.random() * 100) + 1;
+        }
+
+        function resetGame() {
+            randomNumber = generateRandomNumber();
+            document.getElementById('guess').value = '';
+            document.getElementById('message').textContent = '';
+            document.getElementById('restart').style.display = 'none';
+            document.getElementById('submit').style.display = 'inline-block';
+        }
+
+        function handleGuess() {
+            const guess = parseInt(document.getElementById('guess').value);
+            const messageElement = document.getElementById('message');
+
+            if (isNaN(guess) || guess < 1 || guess > 100) {
+                messageElement.textContent = 'Por favor, insira um número entre 1 e 100.';
+                messageElement.className = 'message incorrect';
+                return;
+            }
+
+            attempts++;
+            
+            if (guess < randomNumber) {
+                messageElement.textContent = 'Muito baixo! Tente novamente.';
+                messageElement.className = 'message incorrect';
+            } else if (guess > randomNumber) {
+                messageElement.textContent = 'Muito alto! Tente novamente.';
+                messageElement.className = 'message incorrect';
+            } else {
+                messageElement.textContent = `Parabéns! Você acertou o número ${randomNumber} em ${attempts} tentativas.`;
+                messageElement.className = 'message correct';
+                document.getElementById('submit').style.display = 'none';
+                document.getElementById('restart').style.display = 'inline-block';
+            }
+        }
+
+        document.getElementById('submit').addEventListener('click', handleGuess);
+        document.getElementById('restart').addEventListener('click', resetGame);
+
+        
+        resetGame();
+    </script>
+</body>
+</html>

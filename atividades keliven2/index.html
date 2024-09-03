@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #message {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Digite algo e clique no botão</h1>
+    
+    <input type="text" id="textInput" placeholder="Digite aqui">
+    <button id="submitButton">Mostrar Mensagem</button>
+    
+    <div id="message"></div>
+    
+    <script>
+        document.getElementById('submitButton').addEventListener('click', function() {
+           
+            var inputText = document.getElementById('textInput').value;
+            
+            /
+            var messageDiv = document.getElementById('message');
+          
+            if (inputText.trim() === '') {
+                messageDiv.textContent = 'Por favor, digite algo no campo de texto.';
+            } else if (inputText.toLowerCase() === 'olá') {
+                messageDiv.textContent = 'Você digitou "Olá"! Que saudação amigável!';
+            } else {
+                messageDiv.textContent = 'Você digitou: ' + inputText;
+            }
+        });
+    </script>
+</body>
+</html>

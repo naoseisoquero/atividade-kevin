@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troca de Cores</title>
+    <style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            flex-direction: column;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #000;
+            transition: background-color 0.3s ease;
+        }
+
+     
+        .box1 {
+            background-color: #ff9999; 
+        }
+
+        .box2 {
+            background-color: #99ff99;
+        }
+
+        .box3 {
+            background-color: #9999ff; 
+        }
+
+        
+        .box1.new-color {
+            background-color: #00ff00; 
+        }
+
+        .box2.new-color {
+            background-color: #0000ff; 
+        }
+
+        .box3.new-color {
+            background-color: #ff0000; 
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="div1" class="box box1"></div>
+        <div id="div2" class="box box2"></div>
+        <div id="div3" class="box box3"></div>
+    </div>
+    <button id="changeColors">Trocar Cores</button>
+
+    <script>
+        
+        document.getElementById('changeColors').addEventListener('click', () => {
+            const div1 = document.getElementById('div1');
+            const div2 = document.getElementById('div2');
+            const div3 = document.getElementById('div3');
+
+           
+            div1.classList.add('new-color');
+            div2.classList.add('new-color');
+            div3.classList.add('new-color');
+
+            
+            setTimeout(() => {
+                div1.classList.remove('new-color');
+                div2.classList.remove('new-color');
+                div3.classList.remove('new-color');
+            }, 3000); 
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Imagens</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .thumbnail:hover {
+            border-color: #007bff;
+        }
+
+        .featured-image {
+            width: 500px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .featured-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <div class="thumbnail-container">
+            <img src="https://img.quizur.com/f/img636138a04cc497.30300056.jpg?lastEdited=1667315874" class="thumbnail" alt="Miniatura 1">
+            <img src="https://pbs.twimg.com/profile_images/1741493705884749825/tFPuUQW-_400x400.jpg" class="thumbnail" alt="Miniatura 2">
+          
+        </div>
+        <div class="featured-image">
+            <img src="https://img.quizur.com/f/img636138a04cc497.30300056.jpg?lastEdited=1667315874" id="featured" alt="Imagem em destaque">
+        </div>
+    </div>
+
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const featuredImage = document.getElementById('featured');
+
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', (event) => {
+                    const newSrc = event.target.src;
+                    featuredImage.src = newSrc;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
